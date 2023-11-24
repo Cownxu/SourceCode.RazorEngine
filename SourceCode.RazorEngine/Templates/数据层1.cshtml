@@ -1,0 +1,16 @@
+﻿using UFX.SCM.EntityModel;@{
+	var gen = Model as SourceCode.RazorEngine.Common.RazorModel;
+	var serviceName = gen.GetCsName(gen.FullTableName).Replace("_", "");
+}
+
+namespace @gen.NameSpace {
+
+@if (string.IsNullOrEmpty(gen.table.Comment) == false) {
+	@:/// <summary>
+	@:/// @gen.table.Comment.Replace("\r\n", "\n").Replace("\n", "\r\n		/// ") IDAL
+	@:/// </summary>
+}
+	public  class @("I"+serviceName+"DAL") : IEFRepository<@gen.GetCsName(gen.FullTableName)> {
+		
+	}
+}

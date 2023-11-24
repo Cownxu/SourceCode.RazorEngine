@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<PackAsTool>true</PackAsTool>
+		<ToolCommandName>botsay</ToolCommandName>
+		<PackageOutputPath>./nupkg</PackageOutputPath>
+		<Title>SourceCode.RazorEngine</Title>
+		<Authors>lingxu.Li</Authors>
+		<Description>用于构造实体及Srvice文件</Description>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="Templates\实体类.cshtml" />
+		<None Remove="Templates\数据层1.cshtml" />
+		<None Remove="Templates\数据层2.cshtml" />
+		<None Remove="Templates\服务层.cshtml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="Templates\数据层1.cshtml">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="Templates\实体类.cshtml">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Templates\数据层2.cshtml">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Templates\服务层.cshtml">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Colorful.Console" Version="1.2.15" />
+		<PackageReference Include="FreeSql" Version="3.2.805" />
+		<PackageReference Include="FreeSql.Provider.SqlServerForSystem" Version="3.2.805" />
+		<PackageReference Include="RazorEngine.NetCore" Version="3.1.0" />
+	</ItemGroup>
+
+</Project>

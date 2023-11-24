@@ -1,0 +1,30 @@
+@{
+var gen = Model as SourceCode.RazorEngine.Common.RazorModel;
+
+Func<string, string> GetDefaultValue = defval => {
+    if (string.IsNullOrEmpty(defval)) return "";
+    return " = " + defval + ";";
+};
+}
+
+namespace @gen.NameSpace {
+
+@if (string.IsNullOrEmpty(gen.table.Comment) == false) {
+	@:/// <summary>
+	@:/// @gen.table.Comment.Replace("\r\n", "\n").Replace("\n", "\r\n		/// ")
+	@:/// </summary>
+}
+	public  class @gen.GetCsName(gen.FullTableName) : Entity {
+
+	@foreach (var col in gen.columns) {
+
+		if (string.IsNullOrEmpty(col.Comment) == false) {
+		@:/// <summary>
+		@:/// @col.Comment.Replace("\r\n", "\n").Replace("\n", "\r\n		/// ")
+		@:/// </summary>
+		}
+		@:public @gen.GetCsType(col) @gen.GetCsName(col.Name) { get; set; }@GetDefaultValue(gen.GetColumnDefaultValue(col, false))
+@:
+	}
+	}
+}

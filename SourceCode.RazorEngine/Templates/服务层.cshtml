@@ -1,0 +1,24 @@
+﻿@{
+	var gen = Model as SourceCode.RazorEngine.Common.RazorModel;
+	var serviceName = gen.GetCsName(gen.FullTableName).Replace("_", "");
+}
+
+namespace @gen.NameSpace {
+
+@if (string.IsNullOrEmpty(gen.table.Comment) == false) {
+	@:/// <summary>
+	@:/// @gen.table.Comment.Replace("\r\n", "\n").Replace("\n", "\r\n		/// ") Service
+	@:/// </summary>
+}
+	public  class @(serviceName+"Service") : BaseService<@gen.GetCsName(gen.FullTableName)> {
+		private I@(serviceName)DAL dal = null;
+        /// <summary>
+        /// 构造函数(接口转换,Dal只负责基类的增删改查)
+        /// </summary>
+        public @(serviceName+"Service")()
+            : base(new @(serviceName)DAL())
+        {
+            dal = IEF as @(serviceName)DAL;
+        }
+	}
+}
