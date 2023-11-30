@@ -1,0 +1,9 @@
+﻿# 代码生成
+> Model、Service、DAL
+```
+例：
+SourceCode.RazorEngine -Razor 1 -NameOptions 0,0,0,0 -NameSpace UFX.SCM.EntityModel -DB "SqlServer,Persist Security Info=True;Data Source=172.16.28.108,17477;User ID=scm;Password=HoIhrR64kTwZnCz9;DataBase=UFO_SCM_Dev;MultipleActiveResultSets=True;TrustServerCertificate=True;" -Filter 
+Table -match DB_Material
+
+
+```

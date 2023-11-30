@@ -6,11 +6,18 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<PackAsTool>true</PackAsTool>
-		<ToolCommandName>botsay</ToolCommandName>
+		<ToolCommandName></ToolCommandName>
 		<PackageOutputPath>./nupkg</PackageOutputPath>
-		<Title>SourceCode.RazorEngine</Title>
+		<Title>Cownxu.SourceCode</Title>
 		<Authors>lingxu.Li</Authors>
 		<Description>用于构造实体及Srvice文件</Description>
+		<PackageProjectUrl>https://github.com/Cownxu/SourceCode.RazorEngine</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/Cownxu/SourceCode.RazorEngine</RepositoryUrl>
+		<NeutralLanguage>zh-CN</NeutralLanguage>
+		<PackageIcon>圣诞礼物.png</PackageIcon>
+		<PackageReadmeFile>main.md</PackageReadmeFile>
+		<PackageId>Cownxu.SourceCode</PackageId>
+		<Version>1.0.2</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -39,10 +46,24 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Include="..\..\..\Users\Lenovo\Downloads\圣诞礼物.png">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Colorful.Console" Version="1.2.15" />
 		<PackageReference Include="FreeSql" Version="3.2.805" />
 		<PackageReference Include="FreeSql.Provider.SqlServerForSystem" Version="3.2.805" />
 		<PackageReference Include="RazorEngine.NetCore" Version="3.1.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="main.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
 	</ItemGroup>
 
 </Project>
