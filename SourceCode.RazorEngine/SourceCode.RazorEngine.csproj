@@ -17,17 +17,21 @@
 		<PackageIcon>圣诞礼物.png</PackageIcon>
 		<PackageReadmeFile>main.md</PackageReadmeFile>
 		<PackageId>Cownxu.SourceCode</PackageId>
-		<Version>1.0.2</Version>
+		<Version>1.0.3</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<None Remove="Templates\实体类.cshtml" />
+		<None Remove="Templates\控制器.cshtml" />
 		<None Remove="Templates\数据层1.cshtml" />
 		<None Remove="Templates\数据层2.cshtml" />
 		<None Remove="Templates\服务层.cshtml" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<Content Include="Templates\控制器.cshtml">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
 		<Content Include="Templates\数据层1.cshtml">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>

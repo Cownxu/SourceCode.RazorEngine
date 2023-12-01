@@ -37,7 +37,8 @@ namespace SourceCode.RazorEngine.Common
             var serviceTemplateStr = File.ReadAllText(@"Templates\服务层.cshtml");
             var dalTemplateStr1 = File.ReadAllText(@"Templates\数据层1.cshtml");
             var dalTemplateStr2 = File.ReadAllText(@"Templates\数据层2.cshtml");
-            var version = "v" + string.Join(".", typeof(ConsoleApp).Assembly.GetName().Version.ToString().Split('.').Where((a, b) => b <= 2));
+			var controllersText = File.ReadAllText(@"Templates\控制器.cshtml");
+			var version = "v" + string.Join(".", typeof(ConsoleApp).Assembly.GetName().Version.ToString().Split('.').Where((a, b) => b <= 2));
             Console.WriteFormatted(@"
   # Github # {0} {1}
 ", Color.SlateGray,
@@ -362,7 +363,31 @@ new Colorful.Formatter("推荐在实体类目录创建 gen.bat，双击它重新
                         Console.WriteFormatted(" OUT DAL -> " + tempOutputFile + "\r\n", Color.DeepSkyBlue);
                         ++outputCounter;
                     }
-                }
+					var controller = ArgsOutput + $"{ArgsMatch.Replace("_", "") + "Controller.cs"}";
+					if (File.Exists(@"Templates\控制器.cshtml") && !File.Exists(controller))
+					{
+
+						var tempId = Guid.NewGuid().ToString("N");
+						Engine.Razor.Compile(controllersText, tempId);
+						var tempSw = new StringWriter();
+						var tempModel = new RazorModel(new TaskBuild
+						{
+							NamespaceName = "UFX.SCM.WebUI.Areas.Admin.Controllers",
+
+						}, tables, table);//ArgsNameOptions
+						tempModel.fsql = fsql;
+						Engine.Razor.Run(tempId, tempSw, null, tempModel);
+
+						StringBuilder tempPlus = new StringBuilder();
+						tempPlus.Append(tempSw.ToString());
+						tempPlus.AppendLine();
+
+						var tempOutputFile = $"{ArgsOutput}{ArgsMatch.Replace("_", "") + "Controller.cs"}";
+						File.WriteAllText(tempOutputFile, tempPlus.ToString(), System.Text.Encoding.UTF8);
+						Console.WriteFormatted(" OUT Controller -> " + tempOutputFile + "\r\n", Color.DeepSkyBlue);
+						++outputCounter;
+					}
+				}
 
 
             }

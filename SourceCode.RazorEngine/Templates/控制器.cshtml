@@ -1,0 +1,27 @@
+﻿@{
+	var gen = Model as SourceCode.RazorEngine.Common.RazorModel;
+	var serviceName = gen.GetCsName(gen.FullTableName).Replace("_", "");
+}
+
+namespace @gen.NameSpace {
+
+@if (string.IsNullOrEmpty(gen.table.Comment) == false) {
+	@:/// <summary>
+	@:/// @gen.table.Comment.Replace("\r\n", "\n").Replace("\n", "\r\n		/// ") Controller
+	@:/// </summary>
+}
+	public  class @(serviceName+"Controller") : BaseController {
+		
+        [Page]
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+		[Page]
+        public ActionResult Edit()
+        {
+            return View();
+        }
+	}
+}
